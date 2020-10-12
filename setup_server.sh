@@ -12,6 +12,7 @@ sudo usermod -aG nagcmd nagios
 sudo apt update 
 
 # Then we need to install the required packages:
+cd
 sudo apt-get install wget libapache2-mod-php build-essential openssl libssl-dev unzip apache2 libgd-dev -y
 
 # Download Nagios
@@ -57,6 +58,7 @@ make
 sudo make install 
 
 # Installing NRPE on Server
+cd
 wget https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-4.0.2/nrpe-4.0.2.tar.gz
 
 # Uncompress NRPE:
