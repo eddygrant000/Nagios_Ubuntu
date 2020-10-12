@@ -35,7 +35,7 @@ sudo make install-init
 sudo make install-config
 
 # We will use Apache2 to serve Nagios' GUI
-cp sample-config/httpd.conf /etc/apache2/sites-available/nagios.conf
+sudo cp sample-config/httpd.conf /etc/apache2/sites-available/nagios.conf
 
 # Add the web server user “www-data” to the “nagcmd” group:
 sudo usermod -G nagcmd www-data
@@ -100,7 +100,10 @@ sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 
 # Add “nagios” service
 
-sudo echo "[Unit]
+sudo touch /etc/systemd/system/nagios.service
+sudo chmod o+w /etc/systemd/system/nagios.service
+
+echo "[Unit]
 Description=Nagios
 BindTo=network.target
 [Install]
@@ -110,6 +113,7 @@ Type=simple
 User=nagios
 Group=nagios
 ExecStart=/usr/local/nagios/bin/nagios /usr/local/nagios/etc/nagios.cfg" >> /etc/systemd/system/nagios.service
+sudo chmod o-w /etc/systemd/system/nagios.service
 
 sudo systemctl enable /etc/systemd/system/nagios.service
 sudo systemctl start nagios
