@@ -94,7 +94,7 @@ sudo a2enmod cgi
 
 # set htpasswd for secure url  manully
 echo "set password for htpasswdd manully -> "
-sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users admin
+sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 
 sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 
